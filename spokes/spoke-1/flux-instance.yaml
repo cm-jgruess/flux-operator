@@ -1,19 +1,14 @@
 apiVersion: fluxcd.controlplane.io/v1
 kind: FluxInstance
 metadata:
-  name: flux
+  name: spoke-1
   namespace: flux-system
-  annotations:
-    fluxcd.controlplane.io/reconcile: "enabled"
-    fluxcd.controlplane.io/reconcileEvery: "2m"
-    fluxcd.controlplane.io/reconcileTimeout: "3m"
 spec:
   sync:
     kind: GitRepository
-    url: "https://github.com/cm-jgruess/flux-operator.git"
+    url: "https://github.com/your-repo/flux-operator.git"
     ref: "refs/heads/main"
-    path: "flux-instance"
-    pullSecret: "flux-system-secret"
+    path: "spokes/spoke-1"
   distribution:
     version: "2.x"
     registry: "ghcr.io/fluxcd"
@@ -22,8 +17,6 @@ spec:
     - kustomize-controller
     - helm-controller
     - notification-controller
-    - image-reflector-controller
-    - image-automation-controller
   cluster:
     type: kubernetes
     multitenant: false
