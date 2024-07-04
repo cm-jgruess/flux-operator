@@ -31,7 +31,7 @@ spec:
     domain: "cluster.local"
   storage:
     class: "standard"
-    size: "1Gi"
+    size: "500Mb"
   kustomize:
     patches:
       - target:
