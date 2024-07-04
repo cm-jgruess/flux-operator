@@ -4,3 +4,4 @@ resources:
   - apps/app
   - infrastructure/infra
   - infrastructure/app-namespace
+  - flux-instance-spoke.yaml
