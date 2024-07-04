@@ -12,7 +12,7 @@ spec:
     kind: GitRepository
     url: "https://github.com/cm-jgruess/flux-operator.git"
     ref: "refs/heads/main"
-    path: "clusters/my-cluster"
+    path: "flux-instance"
     pullSecret: "flux-system-secret"
   distribution:
     version: "2.x"
@@ -30,8 +30,8 @@ spec:
     networkPolicy: true
     domain: "cluster.local"
   storage:
-    class: "standard"
-    size: "500Mb"
+    class: "local-path"
+    size: "500Mi"
   kustomize:
     patches:
       - target:
