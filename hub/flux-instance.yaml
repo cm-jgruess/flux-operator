@@ -26,7 +26,7 @@ spec:
     - image-automation-controller
   cluster:
     type: kubernetes
-    multitenant: false
+    multitenant: true
     networkPolicy: true
     domain: "cluster.local"
   storage:

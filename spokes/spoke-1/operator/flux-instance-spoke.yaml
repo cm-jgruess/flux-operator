@@ -2,7 +2,7 @@ apiVersion: fluxcd.controlplane.io/v1
 kind: FluxInstance
 metadata:
   name: spoke-1
-  namespace: flux-system
+  namespace: spoke-system
 spec:
   sync:
     kind: GitRepository
@@ -20,7 +20,7 @@ spec:
     - notification-controller
   cluster:
     type: kubernetes
-    multitenant: false
+    multitenant: true
     networkPolicy: true
     domain: "cluster.local"
   storage:
