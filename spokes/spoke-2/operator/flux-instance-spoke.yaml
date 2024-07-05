@@ -1,0 +1,39 @@
+apiVersion: fluxcd.controlplane.io/v1
+kind: FluxInstance
+metadata:
+  name: spoke-2
+  namespace: flux-system
+spec:
+  sync:
+    kind: GitRepository
+    url: "https://github.com/your-repo/flux-operator.git"
+    ref: "refs/heads/main"
+    path: "spokes/spoke-2"
+  distribution:
+    version: "2.x"
+    registry: "ghcr.io/fluxcd"
+  components:
+    - source-controller
+    - kustomize-controller
+    - helm-controller
+    - notification-controller
+  cluster:
+    type: kubernetes
+    multitenant: false
+    networkPolicy: true
+    domain: "cluster.local"
+  storage:
+    class: "local-path"
+    size: "500Mi"
+  kustomize:
+    patches:
+      - target:
+          kind: Deployment
+          name: "(kustomize-controller|helm-controller)"
+        patch: |
+          - op: add
+            path: /spec/template/spec/containers/0/args/-
+            value: --concurrent=10
+          - op: add
+            path: /spec/template/spec/containers/0/args/-
+            value: --requeue-dependency=5s

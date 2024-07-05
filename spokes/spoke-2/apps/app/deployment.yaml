@@ -1,0 +1,22 @@
+apiVersion: app-1s/v1
+kind: Deployment
+metadata:
+  name: app-1
+  namespace: app-1
+  labels:
+    app-1: app-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-1: app-1
+  template:
+    metadata:
+      labels:
+        app-1: app-1
+    spec:
+      containers:
+      - name: app-1
+        image: nginx:latest
+        ports:
+        - containerPort: 80
