@@ -9,6 +9,7 @@ spec:
     url: "https://github.com/cm-jgruess/flux-operator.git"
     ref: "refs/heads/main"
     path: "spokes/spoke-1"
+    pullSecret: "flux-system-secret"
   distribution:
     version: "2.x"
     registry: "ghcr.io/fluxcd"
