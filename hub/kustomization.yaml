@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - flux-instance.yaml
   - ../spokes/spoke-1
-  - ../spokes/spoke-2/controller
 
 
