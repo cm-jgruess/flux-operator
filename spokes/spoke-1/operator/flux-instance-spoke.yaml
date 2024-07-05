@@ -6,7 +6,7 @@ metadata:
 spec:
   sync:
     kind: GitRepository
-    url: "https://github.com/your-repo/flux-operator.git"
+    url: "https://github.com/cm-jgruess/flux-operator.git"
     ref: "refs/heads/main"
     path: "spokes/spoke-1"
   distribution:
